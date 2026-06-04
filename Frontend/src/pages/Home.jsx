@@ -17,7 +17,7 @@ const Home = ({ open, setOpen }) => {
             try {
                 
                 const { data } = await axios.get(
-                    "http://localhost:8080/verify",
+                    "https://sigmagpt-backened.onrender.com/verify",
                     { withCredentials: true }
                 );
 

@@ -19,7 +19,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
    const getAllThreads = async () => {
       try {
-         const response = await fetch("http://localhost:8080/api/thread");
+         const response = await fetch("https://sigmagpt-backened.onrender.com/api/thread");
          const res = await response.json();
          const filteredData = res.map(thread => ({ threadID: thread.threadID, title: thread.title }))
          setAllThreads(filteredData);
@@ -47,7 +47,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
       try {
          setGlobalLoading(true);
-         const response = await fetch(`http://localhost:8080/api/thread/${newThreadID}`);
+         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${newThreadID}`);
          const res = await response.json();
 
          setPrevChat(res);
@@ -66,7 +66,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
       try {
          setGlobalLoading(true);
-         const response = await fetch(`http://localhost:8080/api/thread/${id}`, { method: "DELETE" });
+         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${id}`, { method: "DELETE" });
          const res = await response.json();
          console.log(res);
 
@@ -100,7 +100,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
    const handleSaveProfile = async () => {
       try {
          const { data } = await axios.put(
-            "http://localhost:8080/profile",
+            "https://sigmagpt-backened.onrender.com/profile",
             {
                username: displayName
             },
@@ -122,7 +122,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
       try {
          setGlobalLoading(true);
          await axios.get(
-            "http://localhost:8080/logout",
+            "https://sigmagpt-backened.onrender.com/logout",
             { withCredentials: true }
          );
 

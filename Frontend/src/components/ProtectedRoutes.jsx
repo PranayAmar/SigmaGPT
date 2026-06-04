@@ -9,7 +9,7 @@ function ProtectedRoutes({children}) {
     useEffect(() => {
         const verifyUser = async () => {
             try {
-                const {data} = await axios.get("http://localhost:8080/verify",
+                const {data} = await axios.get("https://sigmagpt-backened.onrender.com/verify",
                     {withCredentials:true}
                 );
 

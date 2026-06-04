@@ -44,7 +44,7 @@ function ChatWindow({ setOpen }) {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/api/chat", options);
+      const res = await fetch("https://sigmagpt-backened.onrender.com/api/chat", options);
       const rep = await res.json();
 
       setReply(rep.reply);
@@ -78,7 +78,7 @@ function ChatWindow({ setOpen }) {
     try {
       setGlobalLoading(true);
       await axios.get(
-        "http://localhost:8080/logout",
+        "https://sigmagpt-backened.onrender.com/logout",
         { withCredentials: true }
       );
 

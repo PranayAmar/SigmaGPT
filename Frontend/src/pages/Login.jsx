@@ -38,7 +38,7 @@ const Login = () => {
       setGlobalLoading(true);
 
       const { data } = await axios.post(
-        "http://localhost:8080/login",
+        "https://sigmagpt-backened.onrender.com/login",
         {
           ...inputValue,
         },
@@ -76,7 +76,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.open("http://localhost:8080/auth/google", "_self");
+    window.open("https://sigmagpt-backened.onrender.com/auth/google", "_self");
   };
 
 
