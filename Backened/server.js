@@ -13,7 +13,7 @@ import "./config/passport.js";
 dotenv.config();
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 
 app.use(express.json());
@@ -31,8 +31,8 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin:["http://localhost:5173"],
-        methods:["GET","POST","PUT","DELETE"],
+        origin:true,
+        
         credentials:true,
     })
 );
@@ -42,9 +42,9 @@ app.use("/api",chatRoutes);
 app.use("/",authRoute);
 
 
-app.listen(PORT,()=> {
+app.listen(PORT,async ()=> {
     console.log(`Listening on port ${PORT}`);
-    connectDB();
+    await connectDB();
 });
 
 const connectDB = async() => {
