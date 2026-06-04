@@ -1,0 +1,28 @@
+.chats {
+ max-width: 43.75rem;
+ padding: 8rem;
+ overflow-y: scroll;
+}
+.userDiv {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+}
+
+.geminiDiv {
+text-align: left;
+font-size: 0.9rem;
+}
+
+.userMes {
+background-color: #323232;
+padding: 0.625rem 1.25rem;
+border-radius: 1rem;
+margin-left: 15rem;
+max-width: 31.25rem;
+width: fit-content;
+}
+/* .geminiMes {
+
+} */
+

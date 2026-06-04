@@ -1,0 +1,138 @@
+/* .chatWindow {
+    background-color: #212121;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar span {
+    margin: 1rem 2rem;
+}
+
+.userIcon {
+    margin: 1rem 2rem;
+}
+
+.userIcon {
+    background-color: #339cff;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; 
+}
+
+.chatInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+.userInput {
+    width: 100%;
+    position: relative;
+    max-width: 43.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    border:none;
+    background-color: rgba(255,255,255,0.05);
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    font-size: 0.8rem;
+    box-shadow: rgba(0,0,0,0.05) 0 54px 55px,
+                rgba(0,0,0,0.05) 0 -12px 30px,
+                rgba(0,0,0,0.05) 0 4px 6px,
+                rgba(0,0,0,0.05) 0 12px 3px,
+                rgba(0,0,0,0.05) 0 -3px 5px;
+}
+input:focus {
+    outline: none;
+}
+
+#submit {
+    cursor: pointer;
+    height: 2.1875rem;
+    width: 2.1875rem;
+    font-size: 1.25rem;
+    position: absolute;
+    right: 1rem;
+    bottom:0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #212121;
+    border-radius: 50%;
+}
+
+#submit:hover {
+    background-color: #212190;
+}
+
+.info {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    color: #b4b4b4;
+}
+
+.dropDown {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  width: 9.375rem;
+  background-color: #323232;
+  padding: 0.3rem 0.3rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  z-index: 1000;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropDownItem {
+    font-size: 1rem;
+    margin: 0.3rem 0rem;
+    padding: 0.5rem 0.2rem;
+    cursor: pointer;
+}
+
+.dropDownItem:hover {
+    background-color: #344ca3;
+    border-radius: 0.5rem;
+  
+}
+.dropDownItem i {
+    font-size:0.9rem;
+    margin-right:1rem;
+} */
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #565869;
+  border-radius: 20px;
+}
