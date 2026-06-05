@@ -37,9 +37,10 @@ app.use(
     cors({
         origin:[
             "http://localhost:5173",
-            "https://sigmagpt-frontend-pdgt.onrender.com/"
+            "https://sigmagpt-frontend-pdgt.onrender.com"
         ],
         credentials:true,
+        methods:["GET","POST","DELETE","PUT"],
     })
 );
 
