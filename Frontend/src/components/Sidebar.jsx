@@ -3,6 +3,7 @@ import { MyContext } from "../context/MyContext.jsx";
 import { v1 as uuidv1 } from 'uuid';
 import axios from "axios";
 import { ThemeContext } from "../context/ThemeContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,6 +16,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
    const [displayName, setDisplayName] = useState(username);
    const { theme, setTheme } = useContext(ThemeContext);
    const [showSettings, setShowSettings] = useState(false);
+   const navigate = useNavigate();
 
 
    const getAllThreads = async () => {
