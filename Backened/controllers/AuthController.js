@@ -14,8 +14,8 @@ export const Signup = async (req, res, next) => {
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,//needs to be done true while production
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 3 * 24 * 60 * 60 * 1000,
 
     });
@@ -51,8 +51,8 @@ export const Login = async (req, res, next) => {
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, //needs to be done true while production
-      sameSite: "lax",
+      secure: true, //needs to be done true while production
+      sameSite: "none",
       maxAge: 3 * 24 * 60 * 60 * 1000,
     });
 
@@ -73,8 +73,8 @@ export const Logout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     return res.status(200).json({

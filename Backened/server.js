@@ -23,6 +23,10 @@ app.use(
         secret:process.env.TOKEN_KEY,
         resave:false,
         saveUninitialized:false,
+        cookie: {
+            secure:true,
+            sameSite:"none"
+        }
     })
 );
 
@@ -31,8 +35,10 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin:true,
-        
+        origin:[
+            "http://localhost:5173",
+            "https://sigmagpt-frontend-pdgt.onrender.com/"
+        ],
         credentials:true,
     })
 );
