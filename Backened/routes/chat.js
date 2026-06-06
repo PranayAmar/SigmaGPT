@@ -1,8 +1,26 @@
 import express from 'express';
 import Thread from "../models/Thread.js";
 import getGeminiAPIResponse from '../util/geminiai.js';
+import jwt from "jsonwebtoken";
+
 
 const router = express.Router();
+
+const getUserId = (req) => {
+  const token = req.cookies.token;
+
+  if(!token) {
+    throw new Error("No token found");
+  }
+
+  const decoded = jwt.verify(
+    token,
+    process.env.TOKEN_KEY
+  );
+
+  return decoded.id;
+
+};
 
 
 router.post("/test", async (req, res) => {
@@ -23,7 +41,9 @@ router.post("/test", async (req, res) => {
 //Get all threads
 router.get("/thread", async (req, res) => {
     try {
-        const threads = await Thread.find({}).sort({ updatedAt: -1 });
+        const userId = getUserId(req);
+
+        const threads = await Thread.find({userId}).sort({ updatedAt: -1 });
         res.json(threads);
 
     } catch (err) {
@@ -36,7 +56,11 @@ router.get("/thread", async (req, res) => {
 router.get("/thread/:threadId", async (req, res) => {
     const { threadId } = req.params;
     try {
-        const thread = await Thread.findOne({ threadID:threadId });
+        const userId = getUserId(req);
+
+        const thread = await Thread.findOne({ threadID:threadId,
+            userId
+         });
 
         if (!thread) {
             res.status(404).json({ error: "Thread not found" });
@@ -53,7 +77,9 @@ router.get("/thread/:threadId", async (req, res) => {
 router.delete("/thread/:threadId", async (req, res) => {
     const { threadId } = req.params;  // also fix naming mismatch
     try {
-        const delThread = await Thread.findOneAndDelete({ threadID: threadId });
+        const userId = getUserId(req);
+
+        const delThread = await Thread.findOneAndDelete({ threadID: threadId,userId, });
 
         if (!delThread) {
             return res.status(404).json({ error: "Thread not found" });
@@ -76,11 +102,15 @@ router.post("/chat", async (req, res) => {
     }
 
     try {
-        let thread = await Thread.findOne({ threadID });
+
+        const userId = getUserId(req);
+
+        let thread = await Thread.findOne({ threadID,userId, });
 
         if (!thread) {
             //create a new thread
             thread = new Thread({
+                userId,
                 threadID,
                 title: message,
                 messages: [{ role: "user", content: message }],

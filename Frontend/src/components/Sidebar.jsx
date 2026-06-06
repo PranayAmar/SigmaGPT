@@ -21,7 +21,9 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
    const getAllThreads = async () => {
       try {
-         const response = await fetch("https://sigmagpt-backened.onrender.com/api/thread");
+         const response = await fetch("https://sigmagpt-backened.onrender.com/api/thread",{
+            credentials:"include",
+         });
          const res = await response.json();
          const filteredData = res.map(thread => ({ threadID: thread.threadID, title: thread.title }))
          setAllThreads(filteredData);
@@ -49,7 +51,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
       try {
          setGlobalLoading(true);
-         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${newThreadID}`);
+         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${newThreadID}`,{credentials: "include",});
          const res = await response.json();
 
          setPrevChat(res);
@@ -68,7 +70,7 @@ function Sidebar({ open, setOpen, username, setUsername }) {
 
       try {
          setGlobalLoading(true);
-         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${id}`, { method: "DELETE" });
+         const response = await fetch(`https://sigmagpt-backened.onrender.com/api/thread/${id}`, { method: "DELETE",credentials:"include", });
          const res = await response.json();
          console.log(res);
 
