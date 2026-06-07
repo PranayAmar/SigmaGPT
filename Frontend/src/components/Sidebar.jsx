@@ -350,17 +350,32 @@ function Sidebar({ open, setOpen, username, setUsername }) {
               >
                 Theme
               </span>
-              <select
-                value={theme}
-                onChange={(e) => {
-                  setTheme(e.target.value);
-                  setShowSettings(false);
-                }}
-                className="bg-[#2b2c2f] outline-none text-white px-3 py-2 rounded-lg"
-              >
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-              </select>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    setTheme("dark");
+                    setShowSettings(false);
+                  }}
+                  className={`flex px-2 py-1 rounded-xl cursor-pointer items-center justify-center gap-2 transition ${theme === "dark" ? "bg-white text-black hover:bg-gray-500" : "bg-[#2b2c2f] text-white border-gray-600 hover:bg-[#343541]"}`}
+                >
+                  <i
+                    className={`fa-solid fa-moon ${theme === "dark" ? "text-black" : ""}`}
+                  ></i>
+                  Dark
+                </button>
+                <button
+                  onClick={() => {
+                    setTheme("light");
+                    setShowSettings(false);
+                  }}
+                  className={`flex px-2 py-1 rounded-xl cursor-pointer items-center justify-center gap-2 transition ${theme === "light" ? "bg-black text-white hover:bg-gray-600" : "bg-gray-200 text-black hover:bg-gray-400"}`}
+                >
+                  <i
+                    className={`fa-solid fa-sun ${theme === "dark" ? "text-black" : ""}`}
+                  ></i>
+                  Light
+                </button>
+              </div>
             </div>
           </div>
         </div>
