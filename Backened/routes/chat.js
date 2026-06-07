@@ -22,22 +22,6 @@ const getUserId = (req) => {
 
 };
 
-
-router.post("/test", async (req, res) => {
-    try {
-        const thread = new Thread({
-            threadID: "abcd",
-            title: "Testing the thread3"
-        });
-
-        const response = await thread.save();
-        res.send(response);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ error: "Failed to save in db" });
-    }
-});
-
 //Get all threads
 router.get("/thread", async (req, res) => {
     try {
@@ -75,7 +59,7 @@ router.get("/thread/:threadId", async (req, res) => {
 
 //Delete the chat 
 router.delete("/thread/:threadId", async (req, res) => {
-    const { threadId } = req.params;  // also fix naming mismatch
+    const { threadId } = req.params;  
     try {
         const userId = getUserId(req);
 

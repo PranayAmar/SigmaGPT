@@ -47,7 +47,7 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/chat");
         }, 1000);
       } else {
         handleError(message);

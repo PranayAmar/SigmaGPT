@@ -32,7 +32,7 @@ router.get(
             maxAge: 3 * 24 * 60 * 60 * 1000,
         });
 
-        res.redirect("https://sigmagpt-frontend-pdgt.onrender.com//");
+        res.redirect("https://sigmagpt-frontend-pdgt.onrender.com/chat");
     }
 );
 

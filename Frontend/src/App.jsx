@@ -10,6 +10,7 @@ import Signup from './pages/Signup.jsx';
 import Home from './pages/Home.jsx';
 import ProtectedRoutes from './components/ProtectedRoutes.jsx';
 import GlobalLoader from './components/GlobalLoader.jsx';
+import LandingPage from './LandingPage.jsx';
 
 
 function App() {
@@ -39,10 +40,12 @@ function App() {
       {globalLoading && <GlobalLoader />}
       
         <Routes>
-          <Route path='/' element={
+          <Route path='/' element={<LandingPage/>} />
+          <Route path='/chat' element = {
             <ProtectedRoutes>
-              <Home open={open} setOpen={setOpen} />
-            </ProtectedRoutes>} />
+              <Home open={open} setOpen={setOpen}/>
+            </ProtectedRoutes>
+          } />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
         </Routes>
