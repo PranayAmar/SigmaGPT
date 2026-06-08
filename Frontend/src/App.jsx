@@ -41,6 +41,7 @@ function App() {
       
         <Routes>
           <Route path='/' element={<LandingPage/>} />
+           <Route path="/index.html" element={<LandingPage />} />
           <Route path='/chat' element = {
             <ProtectedRoutes>
               <Home open={open} setOpen={setOpen}/>
