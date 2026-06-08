@@ -31,7 +31,7 @@ router.get(
             sameSite: "none",
             maxAge: 3 * 24 * 60 * 60 * 1000,
         });
-
+        console.log("Redirecting to chat");
         res.redirect("https://sigmagpt-frontend-pdgt.onrender.com/chat");
     }
 );
