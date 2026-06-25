@@ -6,6 +6,9 @@ import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/github-dark.css';
 import { RingLoader } from 'react-spinners';
 import { ThemeContext } from '../context/ThemeContext.jsx';
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 
 
 
@@ -16,7 +19,7 @@ function Chat({loading}) {
 
     useEffect(() => {
 
-    if (reply === null) {
+    if (!reply) {
         setLatestReply(null);
         return;
     }
@@ -74,7 +77,7 @@ function Chat({loading}) {
                                 chat.role === 'user' ?
                                     <p className='bg-sky-600 text-white px-5 py-3 rounded-2xl max-w-[80%] md:max-w-[65%] break-words text-sm md:text-base shadow-md'>{chat.content}</p> : (
                                         <div className={`${theme === "dark" ? "bg-[#1f1f1f]" : "bg-gray-900"} text-white px-5 py-3 rounded-2xl max-w-[85%] md:max-w-[70%] overflow-x-auto whitespace-pre-wrap text-sm md:text-base shadow-md`}>
-                                            <ReactMarkdown rehypePlugins={rehypeHighlight}>{chat.content}</ReactMarkdown>
+                                            <ReactMarkdown rehypePlugins={[rehypeHighlight,rehypeKatex]} remarkPlugins={[remarkMath]}>{chat.content}</ReactMarkdown>
                                         </div>
                                     )}
                         </div>
@@ -86,7 +89,7 @@ function Chat({loading}) {
                         <div className='flex justify-start w-full' key={"typing"}>
                             <div className='bg-[#1e1e1e] text-white px-4 py-3 rounded-2xl max-w-[90%] md:max-w-[75%] overflow-x-auto whitespace-pre-wrap text-sm md:text-base shadow-md'>
 
-                                <ReactMarkdown rehypePlugins={rehypeHighlight}>{latestReply}</ReactMarkdown>
+                                <ReactMarkdown rehypePlugins={[rehypeHighlight,rehypeKatex]} remarkPlugins={[remarkMath]}>{latestReply}</ReactMarkdown>
                             </div>
                         </div>
                     )}

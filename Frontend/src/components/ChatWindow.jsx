@@ -47,7 +47,11 @@ function ChatWindow({ setOpen }) {
     try {
       const res = await fetch("https://sigmagpt-backened.onrender.com/api/chat", options);
       const rep = await res.json();
-
+      
+      if (!res.ok) {
+    setReply(rep.error || "Something went wrong");
+    return;
+}
       setReply(rep.reply);
       setAllThreads(prev => {
         const exists = prev.find(
@@ -159,13 +163,13 @@ function ChatWindow({ setOpen }) {
 
       <div className={`border-t rounded-t-3xl px-3 shadow-lg md:px-6 py-4 ${theme === "dark" ? "bg-black border-gray-700 shadow-[0_-3px_6px_-1px_rgba(59,130,246,0.18)]" : "bg-white border-gray-500 shadow-[0_-4px_6px_-1px_rgba(55,65,81,1)]"}`}>
         <div className="max-w-4xl mx-auto">
-          <div className={`flex items-center rounded-3xl px-4 py-3 ${theme === "dark" ? "bg-[#212121]" : "bg-gray-300"}`}>
+          <div className={`flex items-center rounded-full px-4 py-2 ${theme === "dark" ? "bg-[#212121]" : "bg-gray-300"}`}>
             <input placeholder="Ask Anything"
               value={prompt}
               disabled={loading}
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' ? getReply() : ''}
-              className={`flex-1 bg-transparent outline-none text-sm md:text-base disabled:opacity-70 ${theme === "dark" ? "text-white placeholder-white" : "text-black placeholder-gray-700"}`}
+              className={`flex-1 bg-transparent outline-none text-md md:text-base disabled:opacity-70 ${theme === "dark" ? "text-white placeholder-white" : "text-black placeholder-gray-700"}`}
             />
 
             <button onClick={loading ? null : getReply} disabled={loading} className={`ml-3 w-10 h-10 rounded-full transition flex items-center justify-center transition-all duration-200 ${loading ? "bg-white text-black" : "bg-sky-600 hover:bg-sky-700 text-white"}`}>
